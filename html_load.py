@@ -1,11 +1,14 @@
+from bs4 import BeautifulSoup
 from urllib2 import urlopen
-import re
-my_address = "https://en.wikipedia.org/wiki/web_scraping"
+
+
+my_address = "http://insiderbranding.com"
 html_page = urlopen(my_address)
 html_text = html_page.read()
-start_tag = "<body>"
-end_tag = "</body>"
-start_index = html_text.find(start_tag) + len(start_tag)
-end_index = html_text.find(end_tag)
+soup = BeautifulSoup(html_text, "html.parser") #second param tells which parser to use
+#scrape all images
 
-print html_text[start_index:end_index]
+images= []
+images= soup.find_all("img")
+for img in images:
+    print img['src']
