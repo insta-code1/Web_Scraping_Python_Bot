@@ -2,6 +2,8 @@ from bs4 import BeautifulSoup
 from urllib2 import urlopen
 
 
+import re
+
 my_address = "http://insiderbranding.com"
 html_page = urlopen(my_address)
 html_text = html_page.read()
